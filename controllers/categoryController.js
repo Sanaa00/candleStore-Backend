@@ -4,7 +4,7 @@ import { tryCatch } from "../utils/tryCatch.js";
 
 //
 export const getCategory = tryCatch(async (req, res) => {
-  const category = await Category.find().populate("products", "productName");
+  const category = await Category.find().populate("products");
 
   res.json({ status: "success", results: category.length, data: category });
 });

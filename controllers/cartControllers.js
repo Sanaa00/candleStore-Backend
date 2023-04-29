@@ -1,23 +1,28 @@
 import path from "path";
 import fs from "fs";
 import Cart from "../models/cart.models.js";
+import User from "../models/user.models.js";
 import Product from "../models/products.models.js";
 import CustomError from "../CustomError.js";
+
 import { tryCatch } from "../utils/tryCatch.js";
 const __dirname = path.resolve();
 const data = JSON.parse(fs.readFileSync(`${__dirname}/data/db.json`));
 
 export const getCartProduct = tryCatch(async (req, res) => {
-  const cartItem = await Cart.find();
+  const cartItem = await Cart.find().populate("products");
   res.json({ status: "success", data: cartItem });
 });
 
 export const addToCart = tryCatch(async (req, res, next) => {
   const cart = await Cart.create(req.body);
 
-  await Product.findByIdAndUpdate(req.body.products, {
-    $set: { product_id: cart._id },
+  await Product.findByIdAndUpdate(req.body.Products, {
+    $push: { Products: req.body.Products },
   });
+  // await User.findByIdAndUpdate(req.body.user, {
+  //   $set: { user: cart._id },
+  // });
   res.status(201).json({ status: "success", data: cart });
 });
 
