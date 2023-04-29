@@ -5,10 +5,17 @@ import {
   updateQuantity,
   deleteProduct,
   addProduct,
+  addProductToCart,
+  productInCart,
 } from "../controllers/productsControllers.js";
+import { uploadMulti } from "../middleware/multer.middleware.js";
 const router = Router();
 
 router.route("/").get(getAllProducts).post(addProduct);
+router.route("/ProductToCart").post(addProductToCart).get(productInCart);
+router.route("/upload-multi").post(uploadMulti, (req, res) => {
+  res.send("success");
+});
 router
   .route("/:id")
   .get(getProductById)
