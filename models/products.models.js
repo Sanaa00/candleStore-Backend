@@ -13,10 +13,15 @@ const productsSchema = new mongoose.Schema({
   favourite: Boolean,
 
   // users: [{ type: mongoose.Types.ObjectId, ref: "user" }],
-  cart: [{ type: mongoose.Types.ObjectId, ref: "cart" }],
+  // cart: [{ type: mongoose.Types.ObjectId, ref: "cart" }],
   categoryId: {
     type: mongoose.Types.ObjectId,
     ref: "category",
+    required: true,
+  },
+  cartItem: {
+    type: mongoose.Types.ObjectId,
+    ref: "cartItem",
     required: true,
   },
 });

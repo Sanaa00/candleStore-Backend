@@ -28,17 +28,14 @@ export const getAllProducts = tryCatch(async (req, res) => {
   // abet await labary inja ish lasar hamu datakan bkay
   //excluteQuery bakar ahene bo detele krdny aw fielda zyaday drus abet ka sort akay yan search  u labrdny harchiak ka la find nia yan la db nia
   // agar - bo nawy feildaka zyad bkay la url awa sortaka 3aks akatwa
-  const products = await Product.find(query)
-    .populate("categoryId", "category")
-    .populate("cart");
+  const products = await Product.find(query).populate("categoryId", "category");
+
   res.json({ status: "success", data: products });
 });
 export const getProductById = tryCatch(async (req, res) => {
   const id = req.params.id;
 
-  const product = await Product.findById(id)
-    .populate("categoryId", "category")
-    .populate("cart");
+  const product = await Product.findById(id).populate("categoryId", "category");
 
   if (!product) {
     res.status(404).json({ status: "error", message: "product not found" });
@@ -78,19 +75,22 @@ export const addProduct = tryCatch(async (req, res) => {
   res.status(200).json({ status: "success", data: product });
 });
 
-export const addProductToCart = tryCatch(async (req, res) => {
-  const product = await Product.find(req.body);
+// export const addProductToCart = tryCatch(async (req, res) => {
+//   const product = await Product.find(req.body);
 
-  await Cart.findByIdAndUpdate(req.body.cart, {
-    $push: { products: product._id },
-  });
+//   await Cart.findByIdAndUpdate(req.body.cart, {
+//     $push: { products: product._id },
+//   });
 
-  res.status(200).json({ status: "success", data: product });
-});
-
-// export const productInCart = tryCatch(async (req, res) => {
-//   const product = await Product.find();
-
-//   res.json({ status: "success", results: product.length, data: product });
+//   res.status(200).json({ status: "success", data: product });
 // });
+
 // http://localhost:8080/api/products?search=bubble&category=Simple
+// export const addProducttoCart = tryCatch(async (req, res) => {
+//   const product = await Product.create(req.body);
+
+//   await Cart.findByIdAndUpdate(req.body.productId, {
+//     $set: { productId: product._id },
+//   });
+//   res.status(200).json({ status: "success", data: product });
+// });

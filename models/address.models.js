@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 
 const addressSchema = new mongoose.Schema({
-  address: { type: String, required: true },
+  city: { type: String, required: true },
+  street: { type: String, required: true },
+  phone: { type: String, required: true },
 
   cart: [{ type: mongoose.Types.ObjectId, ref: "cart", required: true }],
 });

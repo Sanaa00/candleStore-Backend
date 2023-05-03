@@ -12,10 +12,10 @@ const cartSchema = new mongoose.Schema({
   // address: { type: String },
   // review: String,
   // category: String,
-
-  user: { type: mongoose.Types.ObjectId, ref: "user" },
-  address: { type: mongoose.Types.ObjectId, ref: "address" },
-
+  totalprice: { type: Number },
+  user: { type: mongoose.Types.ObjectId, ref: "user", required: true },
+  address: [{ type: mongoose.Types.ObjectId, ref: "address" }],
+  // totalPrice: Number,
   // order: { type: mongoose.Types.ObjectId, ref: "order" },
   products: [{ type: mongoose.Types.ObjectId, ref: "product" }],
 });
