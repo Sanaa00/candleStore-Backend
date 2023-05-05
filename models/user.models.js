@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true, minlength: 6 },
   // confirmPassword: { type: String, required: true, minlength: 6 },
   role: { type: String, default: "user" },
-  cart: [{ type: mongoose.Types.ObjectId, ref: "cart" }],
+  cart: { type: mongoose.Types.ObjectId, ref: "cart" },
 });
 userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, 12);

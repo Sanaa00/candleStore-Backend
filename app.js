@@ -13,6 +13,7 @@ import categoryRoutes from "./routers/categoryRouters.js";
 import addressRoutes from "./routers/addressRouters.js";
 import cartItemRoutes from "./routers/cartItemRouters.js";
 import reviewRoutes from "./routers/reviewRoutes.js";
+// import addressRoutes from "./routers/addressRouters.js";
 import { connectDB } from "./config/db.js";
 import { trimQueryMiddleware } from "./middleware/trimQuery.middleware.js";
 import { errorHandler } from "./middleware/errorHandler.middleware.js";
@@ -46,6 +47,7 @@ app.use("/api/review", reviewRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/address", addressRoutes);
 app.use("/api/cartItem", cartItemRoutes);
+// app.use("/api/address", addressRoutes);
 
 app.use(errorHandler);
 

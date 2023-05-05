@@ -4,17 +4,20 @@ import {
   getCartProduct,
   updateCartQuantity,
   deleteCartItem,
-  getCartById,
+  getCartByUserId,
 } from "../controllers/cartControllers.js";
 import { protect } from "../middleware/auth.middleware.js";
 
 const router = Router();
-router.route("/").get(getCartProduct).post(protect, addToCart);
 
 router
-  .route("/:id")
-  .patch(updateCartQuantity)
-  .delete(deleteCartItem)
-  .get(getCartById);
+  .route("/")
+  .get(getCartProduct)
+  .post(protect, addToCart)
+  // .put(updateCartQuantity)
+  .delete(deleteCartItem);
+
+router.route("/:cartId").put(updateCartQuantity);
+router.route("/:userId").get(getCartByUserId);
 
 export default router;
