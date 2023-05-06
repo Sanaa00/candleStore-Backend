@@ -7,23 +7,15 @@ const productsSchema = new mongoose.Schema({
   color: [String],
   images: { type: [String], required: true },
   raiting: { type: Number, default: 1 },
-  // category: String,
-  quantity: { type: Number, default: 1 },
   discount: Number,
   favourite: Boolean,
 
-  // users: [{ type: mongoose.Types.ObjectId, ref: "user" }],
-  // cart: [{ type: mongoose.Types.ObjectId, ref: "cart" }],
   categoryId: {
     type: mongoose.Types.ObjectId,
     ref: "category",
     required: true,
   },
-  cartItem: {
-    type: mongoose.Types.ObjectId,
-    ref: "cartItem",
-    required: true,
-  },
+  review: [{ type: mongoose.Types.ObjectId, ref: "review" }],
 });
 const product = mongoose.model("product", productsSchema);
 export default product;

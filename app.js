@@ -7,11 +7,8 @@ import productsRoutes from "./routers/productsRoutes.js";
 import cartRoutes from "./routers/cartRoutes.js";
 import userRoutes from "./routers/userRoutes.js";
 import contactRoutes from "./routers/contactRoutes.js";
-import loginRoutes from "./routers/loginRoutes.js";
-// import orderRoutes from "./routers/orderRoutes.js";
 import categoryRoutes from "./routers/categoryRouters.js";
 import addressRoutes from "./routers/addressRouters.js";
-import cartItemRoutes from "./routers/cartItemRouters.js";
 import reviewRoutes from "./routers/reviewRoutes.js";
 // import addressRoutes from "./routers/addressRouters.js";
 import { connectDB } from "./config/db.js";
@@ -22,7 +19,6 @@ import { swaggerSpecs } from "./config/swagger.js";
 import swaggerUi from "swagger-ui-express";
 import "./strategy/auth.js";
 dotenv.config();
-// const express = require("express");
 
 connectDB();
 const app = express();
@@ -41,13 +37,10 @@ app.use("/api/products", productsRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/contact", contactRoutes);
-app.use("/api/login", loginRoutes);
+
 app.use("/api/review", reviewRoutes);
-// app.use("/api/order", orderRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/address", addressRoutes);
-app.use("/api/cartItem", cartItemRoutes);
-// app.use("/api/address", addressRoutes);
 
 app.use(errorHandler);
 

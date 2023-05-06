@@ -53,15 +53,19 @@ export const addToCart = tryCatch(async (req, res, next) => {
     if (req.body.address) {
       if (!cart.address) {
         cart.address.push(req.body.address);
+        // await cart.save();
+        // cart.products = [];
       } else {
         cart.address = req.body.address;
+        // // await cart.save();/
+        // cart.products = [];
       }
     }
     await cart.save();
     res.status(201).json({ status: "success", data: cart });
   }
 });
-
+//TODO: updtae qantity xala
 export const updateCartQuantity = tryCatch(async (req, res) => {
   const cartId = req.params.cartId;
   const productId = req.body.productId;
@@ -105,13 +109,12 @@ export const deleteCartItem = tryCatch(async (req, res) => {
   const cartitems = await Cart.findOne({ user: userId }).then((cart) => {
     if (!cart) {
       return new CustomError("cart not found", 401, 4001);
-
-      // throw new Error("Cart not found");
     }
 
     const productIndex = cart.products.findIndex(
-      (product) => String(product._id) === productIdToRemove
+      (product) => String(product?._id) === productIdToRemove
     );
+    console.log(productIdToRemove);
 
     if (productIndex === -1) {
       throw new Error("Product not found in cart");

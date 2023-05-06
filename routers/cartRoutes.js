@@ -12,10 +12,9 @@ const router = Router();
 
 router
   .route("/")
+  .delete(deleteCartItem)
   .get(getCartProduct)
-  .post(protect, addToCart)
-  // .put(updateCartQuantity)
-  .delete(deleteCartItem);
+  .post(protect, addToCart);
 
 router.route("/:cartId").put(updateCartQuantity);
 router.route("/:userId").get(getCartByUserId);

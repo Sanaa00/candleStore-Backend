@@ -5,7 +5,6 @@ import Cart from "../models/cart.models.js";
 import passport from "passport";
 import jwt from "jsonwebtoken";
 import { tryCatch } from "../utils/tryCatch.js";
-// import cart from "../models/cart.models.js";
 const __dirname = path.resolve();
 const data = JSON.parse(fs.readFileSync(`${__dirname}/data/db.json`));
 
@@ -44,7 +43,6 @@ export const signup = async (req, res, next) => {
     });
   } catch (err) {
     next(err);
-    // res.status(500).json({ status: "error", data: err });
   }
 };
 export const login = async (req, res, next) => {
