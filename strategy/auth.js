@@ -72,7 +72,5 @@ passport.use(
         done(error);
       }
     }
-
-    
   )
 );

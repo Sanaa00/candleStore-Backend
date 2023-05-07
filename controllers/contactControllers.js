@@ -9,3 +9,7 @@ export const addContact = tryCatch(async (req, res) => {
   const contact = await Contact.create(req.body);
   res.status(200).json({ status: "success", data: contact });
 });
+export const getContact = tryCatch(async (req, res) => {
+  const contact = await Contact.find();
+  res.status(200).json({ status: "success", data: contact });
+});
