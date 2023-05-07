@@ -47,25 +47,21 @@ export const addToCart = tryCatch(async (req, res, next) => {
         cart.totalprice = req.body.totalprice;
       }
     }
-
+    //todo: check bkaytawa agar itemka haya qantity zyda bkat
     cart.products.push(req.body.productId);
 
     if (req.body.address) {
       if (!cart.address) {
         cart.address.push(req.body.address);
-        // await cart.save();
-        // cart.products = [];
       } else {
         cart.address = req.body.address;
-        // // await cart.save();/
-        // cart.products = [];
       }
     }
     await cart.save();
     res.status(201).json({ status: "success", data: cart });
   }
 });
-//TODO: updtae qantity xala
+//TODO: updtae qantity xalata
 export const updateCartQuantity = tryCatch(async (req, res) => {
   const cartId = req.params.cartId;
   const productId = req.body.productId;
