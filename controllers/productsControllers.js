@@ -5,7 +5,6 @@ import Category from "../models/category.models.js";
 import Cart from "../models/cart.models.js";
 import { tryCatch } from "../utils/tryCatch.js";
 import Review from "../models/review.models.js";
-import review from "../models/review.models.js";
 
 const __dirname = path.resolve();
 const data = JSON.parse(fs.readFileSync(`${__dirname}/data/db.json`));
@@ -34,35 +33,8 @@ export const getAllProducts = tryCatch(async (req, res) => {
 
   getQuery.skip(skip).limit(limit);
   const products = await getQuery;
-  // console.log(getQuery);
-
-  // const totalPage = Math.ceil(products.length / limit);
-  // console.log(products?.length);
-  // console.log(query);
-  // abet await labary inja ish lasar hamu datakan bkay
-  //excluteQuery bakar ahene bo detele krdny aw fielda zyaday drus abet ka sort akay yan search  u labrdny harchiak ka la find nia yan la db nia
-  // agar - bo nawy feildaka zyad bkay la url awa sortaka 3aks akatwa
-  // products = await Product.find(queryObj).populate("categoryId", "category");
-  // .populate("review");
 
   res.json({ status: "success", data: { result: productLength, products } });
-  // let query = {};
-  // query = JSON.parse(
-  //   JSON.stringify(req.query).replace(
-  //     /\b(gte|gt|lt|lte)\b/g,
-  //     (match) => `$${match}`
-  //   )
-  // );
-  // if (req.query.search) {
-  //   query.productName = new RegExp(req.query.search, "i");
-  // }
-  // delete query.search;
-  // console.log(query);
-  // abet await labary inja ish lasar hamu datakan bkay
-  //excluteQuery bakar ahene bo detele krdny aw fielda zyaday drus abet ka sort akay yan search  u labrdny harchiak ka la find nia yan la db nia
-  // agar - bo nawy feildaka zyad bkay la url awa sortaka 3aks akatwa
-  // const products = await Product.find(query).populate("categoryId", "category");
-  // .populate("review");
 
   res.json({ status: "success", data: products });
 });

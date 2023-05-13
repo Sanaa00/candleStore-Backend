@@ -6,12 +6,9 @@ import Product from "../models/products.models.js";
 import CustomError from "../CustomError.js";
 import Address from "../models/address.models.js";
 import mongoose from "mongoose";
-// import mongoose from "mongoose";
-// const mongoose = require("mongoose");
-
 import { tryCatch } from "../utils/tryCatch.js";
 import { json } from "express";
-import address from "../models/address.models.js";
+
 const __dirname = path.resolve();
 const data = JSON.parse(fs.readFileSync(`${__dirname}/data/db.json`));
 
@@ -28,18 +25,35 @@ export const getCartProduct = tryCatch(async (req, res) => {
 
 export const addToCart = tryCatch(async (req, res, next) => {
   const user = req.user.sub;
-  console.log(req.user);
-  const cart = await Cart.findOne({ user, status: "cart" }); //bo away tanya awanay cart bigarenetawa nak orderakan
+  const { productId, quantity } = req.body;
+
+  if (productId && !mongoose.Types.ObjectId.isValid(productId)) {
+    return res
+      .status(400)
+      .json({ status: "error", message: "Invalid productId" });
+  }
+
+  const cart = await Cart.findOne({ user, status: "cart" });
 
   if (!cart) {
     const newCart = await Cart.create({
-      products: [req.body.productId],
+      products: [{ productId, quantity }],
       user,
-      // address: [req.body.address],
     });
 
-    res.status(201).json({ status: "success", data: newCart });
+    return res.status(201).json({ status: "success", data: newCart });
   } else {
+    if (productId) {
+      const existingProduct = cart.products.find(
+        (item) => item.productId.toString() === productId
+      );
+      if (existingProduct) {
+        existingProduct.quantity += quantity || 1;
+      } else {
+        cart.products.push({ productId, quantity });
+      }
+    }
+
     if (req.body.totalprice) {
       if (!cart.totalprice) {
         cart.totalprice.push(req.body.totalprice);
@@ -47,8 +61,6 @@ export const addToCart = tryCatch(async (req, res, next) => {
         cart.totalprice = req.body.totalprice;
       }
     }
-    //todo: check bkaytawa agar itemka haya qantity zyda bkat
-    cart.products.push(req.body.productId);
 
     if (req.body.address) {
       if (!cart.address) {
@@ -57,38 +69,46 @@ export const addToCart = tryCatch(async (req, res, next) => {
         cart.address = req.body.address;
       }
     }
+
     await cart.save();
-    res.status(201).json({ status: "success", data: cart });
   }
+
+  res.status(201).json({ status: "success", data: cart });
 });
-//TODO: updtae qantity xalata
+
 export const updateCartQuantity = tryCatch(async (req, res) => {
-  const cartId = req.params.cartId;
-  const productId = req.body.productId;
-  const newQuantity = req.body.quantity;
+  try {
+    const { cartId, productId } = req.params;
+    const { quantity } = req.body;
 
-  const cart = await Cart.findByIdAndUpdate(cartId).populate("products");
+    const cart = await Cart.findById(cartId);
 
-  const product = cart.products.find(
-    (product) => product._id.toString() === productId
-  );
+    if (!cart) {
+      return res.status(404).json({ error: "Cart not found" });
+    }
 
-  if (!product) {
-    return res.status(404).json({ message: "Product not found in cart" });
+    const product = cart.products.find(
+      (p) => p.productId.toString() === productId
+    );
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found in the cart" });
+    }
+
+    product.quantity = quantity;
+    await cart.save();
+
+    res.json(cart);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
-
-  product.quantity = newQuantity;
-
-  await cart.save();
-
-  res.status(200).json({ status: "success", data: cart });
 });
 
 export const getCartByUserId = tryCatch(async (req, res) => {
   try {
     const userId = req.params.userId;
     const carts = await Cart.find({ user: userId })
-      .populate("products")
+      .populate("products.productId")
       .populate("user");
     console.log(carts); // log the carts to see if the updated cart is included
     res.status(200).json({ status: "success", data: carts });
@@ -98,31 +118,33 @@ export const getCartByUserId = tryCatch(async (req, res) => {
 });
 
 export const deleteCartItem = tryCatch(async (req, res) => {
-  const userId = req.body.userId;
-  // const userId = "6453798d587d2dd51e7affac";
-  const productIdToRemove = req.body._id;
+  const cartId = req.body.cartId; // Replace with the actual cart ID
+  const productId = req.body.productId; // Replace with the actual product ID
 
-  const cartitems = await Cart.findOne({ user: userId }).then((cart) => {
+  try {
+    const cart = await Cart.findById(cartId);
+
     if (!cart) {
-      return new CustomError("cart not found", 401, 4001);
+      return res
+        .status(404)
+        .json({ status: "error", message: "Cart not found" });
     }
 
+    // Find the index of the product in the products array
     const productIndex = cart.products.findIndex(
-      (product) => String(product?._id) === productIdToRemove
+      (item) => item.productId.toString() === productId
     );
-    console.log(productIdToRemove);
 
-    if (productIndex === -1) {
-      throw new Error("Product not found in cart");
+    if (productIndex !== -1) {
+      // Remove the product from the products array
+      cart.products.splice(productIndex, 1);
     }
 
-    cart.products.splice(productIndex, 1);
-    // res.status(200).json({ status: "success", data: cart });
-
-    res.status(200).json({ status: "success", data: cart });
-    if (!cart) {
-      return new CustomError("product not found", 401, 4001);
-    }
-    return cart.save();
-  });
+    await cart.save();
+    return res.status(200).json({ status: "success", data: cart });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ status: "error", message: "An error occurred" });
+  }
 });
