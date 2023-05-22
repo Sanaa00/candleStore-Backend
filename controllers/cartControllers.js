@@ -1,13 +1,13 @@
-import path from "path";
-import fs from "fs";
-import Cart from "../models/cart.models.js";
 import User from "../models/user.models.js";
 import Product from "../models/products.models.js";
 import CustomError from "../CustomError.js";
 import Address from "../models/address.models.js";
+import { json } from "express";
+import path from "path";
+import fs from "fs";
+import Cart from "../models/cart.models.js";
 import mongoose from "mongoose";
 import { tryCatch } from "../utils/tryCatch.js";
-import { json } from "express";
 
 const __dirname = path.resolve();
 const data = JSON.parse(fs.readFileSync(`${__dirname}/data/db.json`));
@@ -17,11 +17,63 @@ export const getCartProduct = tryCatch(async (req, res) => {
     .populate("products")
     .populate("address")
     .populate("user");
+
   // await Address.findByIdAndUpdate(req.body.address, {
   //   $push: { address: address._id },
   // });
+
   res.json({ status: "success", data: cartItem });
 });
+
+//   export const addToCart = tryCatch(async (req, res, next) => {
+//   const user = req.user.sub;
+//   const { productId, quantity, totalprice, address } = req.body;
+// if (productId && !mongoose.Types.ObjectId.isValid(productId)) {
+//   return res
+//     .status(400)
+//     .json({ status: "error", message: "Invalid productId" });
+// }
+//   const cart = await Cart.findOne({ user, status: "cart" });
+//   if (!cart) {
+//     const newCart = await Cart.create({
+//       products: [{ productId, quantity }],
+//       user,
+//     });
+//     return res.status(201).json({ status: "success", data: newCart });
+//   } else {
+//     if (productId) {
+//       const existingProduct = cart.products.find(
+//         (item) => item.productId.toString() === productId
+//       );
+//       if (existingProduct) {
+//         existingProduct.quantity += quantity || 1;
+//       } else {
+//         cart.products.push({ productId, quantity });
+//       }
+//     }
+//     if (totalprice) {
+//       if (!cart.totalprice) {
+//         cart.totalprice.push(totalprice);
+//       } else {
+//         cart.totalprice = totalprice;
+//       }
+//     }
+//     await cart.save();
+//     if (address) {
+//       if (!cart.address || cart.address !== address) {
+//         await cart.save(); // Save the cart with products and total before resetting
+//         // Reset the cart to empty
+//         cart.products = [];
+//         cart.totalprice = null;
+//         cart.address = address;
+//         await cart.save(); // Save the cart with the updated address
+//       }
+//     } else {
+//       await cart.save(); // Save the cart without resetting
+//     }
+//     res.status(201).json({ status: "success", data: cart });
+//   }
+// });
 
 export const addToCart = tryCatch(async (req, res, next) => {
   const user = req.user.sub;
@@ -69,6 +121,13 @@ export const addToCart = tryCatch(async (req, res, next) => {
         cart.address = req.body.address;
       }
     }
+    if (req.body.status) {
+      //  if (!cart.address) {
+      //    cart.address.push(req.body.address);
+      //  } else {
+      cart.status = req.body.status;
+    }
+    //  }
 
     await cart.save();
   }
@@ -80,11 +139,17 @@ export const updateCartQuantity = tryCatch(async (req, res) => {
   try {
     const { cartId, productId } = req.params;
     const { quantity } = req.body;
+    if (!mongoose.Types.ObjectId.isValid(cartId)) {
+      res.status(400).json({ error: "Invalid cartId" });
+      return;
+    }
 
-    const cart = await Cart.findById(cartId);
+    const cart = await Cart.findOne({ _id: cartId, status: "cart" }); // Find the cart with the specified ID and status 'cart'
 
     if (!cart) {
-      return res.status(404).json({ error: "Cart not found" });
+      return res
+        .status(404)
+        .json({ error: "Cart not found or not in the cart state" });
     }
 
     const product = cart.products.find(
@@ -104,10 +169,40 @@ export const updateCartQuantity = tryCatch(async (req, res) => {
   }
 });
 
+// export const updateCartQuantity = tryCatch(async (req, res) => {
+//   try {
+//     const { cartId, productId } = req.params;
+//     const { quantity } = req.body;
+//     if (!mongoose.Types.ObjectId.isValid(cartId)) {
+//       res.status(400).json({ error: "Invalid cartId" });
+//       return;
+//     }
+//     const cart = await Cart.findOne(cartId);
+
+//     if (!cart || cart.status !== "cart") {
+//       return res.status(404).json({ error: "Cart not found" });
+//     }
+//     const product = cart.products.find(
+//       (p) => p.productId.toString() === productId
+//     );
+
+//     if (!product) {
+//       return res.status(404).json({ error: "Product not found in the cart" });
+//     }
+
+//     product.quantity = quantity;
+//     await cart.save();
+
+//     res.json(cart);
+//   } catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
+// });
+
 export const getCartByUserId = tryCatch(async (req, res) => {
   try {
     const userId = req.params.userId;
-    const carts = await Cart.find({ user: userId })
+    const carts = await Cart.find({ user: userId, status: "cart" })
       .populate("products.productId")
       .populate("user");
     console.log(carts); // log the carts to see if the updated cart is included
@@ -118,11 +213,11 @@ export const getCartByUserId = tryCatch(async (req, res) => {
 });
 
 export const deleteCartItem = tryCatch(async (req, res) => {
-  const cartId = req.body.cartId; // Replace with the actual cart ID
-  const productId = req.body.productId; // Replace with the actual product ID
+  const cartId = req.body.cartId;
+  const productId = req.body.productId;
 
   try {
-    const cart = await Cart.findById(cartId);
+    const cart = await Cart.findById({ cartId, status: "cart" });
 
     if (!cart) {
       return res
@@ -130,16 +225,13 @@ export const deleteCartItem = tryCatch(async (req, res) => {
         .json({ status: "error", message: "Cart not found" });
     }
 
-    // Find the index of the product in the products array
     const productIndex = cart.products.findIndex(
       (item) => item.productId.toString() === productId
     );
 
     if (productIndex !== -1) {
-      // Remove the product from the products array
       cart.products.splice(productIndex, 1);
     }
-
     await cart.save();
     return res.status(200).json({ status: "success", data: cart });
   } catch (error) {
