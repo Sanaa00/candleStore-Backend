@@ -50,8 +50,6 @@ export const login = async (req, res, next) => {
     try {
       if (err || !user) {
         const error = new CustomError("product not found", 401, 4001);
-
-        // const error = new Error("no user found");
         next(error);
         return;
       }
@@ -61,7 +59,7 @@ export const login = async (req, res, next) => {
         const body = { sub: user._id, email: user.email };
         const token = jwt.sign({ user: body }, process.env.JWT_SECRET);
 
-        res.json({ token });
+        res.json({ token, user });
       });
     } catch (err) {}
   })(req, res, next);

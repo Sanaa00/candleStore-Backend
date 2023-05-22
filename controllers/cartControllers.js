@@ -1,17 +1,14 @@
-import path from "path";
-import fs from "fs";
-import Cart from "../models/cart.models.js";
 import User from "../models/user.models.js";
 import Product from "../models/products.models.js";
 import CustomError from "../CustomError.js";
 import Address from "../models/address.models.js";
-import mongoose from "mongoose";
-// import mongoose from "mongoose";
-// const mongoose = require("mongoose");
-
-import { tryCatch } from "../utils/tryCatch.js";
 import { json } from "express";
-import address from "../models/address.models.js";
+import path from "path";
+import fs from "fs";
+import Cart from "../models/cart.models.js";
+import mongoose from "mongoose";
+import { tryCatch } from "../utils/tryCatch.js";
+
 const __dirname = path.resolve();
 const data = JSON.parse(fs.readFileSync(`${__dirname}/data/db.json`));
 
@@ -20,26 +17,95 @@ export const getCartProduct = tryCatch(async (req, res) => {
     .populate("products")
     .populate("address")
     .populate("user");
+
   // await Address.findByIdAndUpdate(req.body.address, {
   //   $push: { address: address._id },
   // });
+
   res.json({ status: "success", data: cartItem });
 });
 
+//   export const addToCart = tryCatch(async (req, res, next) => {
+//   const user = req.user.sub;
+//   const { productId, quantity, totalprice, address } = req.body;
+// if (productId && !mongoose.Types.ObjectId.isValid(productId)) {
+//   return res
+//     .status(400)
+//     .json({ status: "error", message: "Invalid productId" });
+// }
+//   const cart = await Cart.findOne({ user, status: "cart" });
+//   if (!cart) {
+//     const newCart = await Cart.create({
+//       products: [{ productId, quantity }],
+//       user,
+//     });
+//     return res.status(201).json({ status: "success", data: newCart });
+//   } else {
+//     if (productId) {
+//       const existingProduct = cart.products.find(
+//         (item) => item.productId.toString() === productId
+//       );
+//       if (existingProduct) {
+//         existingProduct.quantity += quantity || 1;
+//       } else {
+//         cart.products.push({ productId, quantity });
+//       }
+//     }
+//     if (totalprice) {
+//       if (!cart.totalprice) {
+//         cart.totalprice.push(totalprice);
+//       } else {
+//         cart.totalprice = totalprice;
+//       }
+//     }
+//     await cart.save();
+//     if (address) {
+//       if (!cart.address || cart.address !== address) {
+//         await cart.save(); // Save the cart with products and total before resetting
+//         // Reset the cart to empty
+//         cart.products = [];
+//         cart.totalprice = null;
+//         cart.address = address;
+//         await cart.save(); // Save the cart with the updated address
+//       }
+//     } else {
+//       await cart.save(); // Save the cart without resetting
+//     }
+//     res.status(201).json({ status: "success", data: cart });
+//   }
+// });
+
 export const addToCart = tryCatch(async (req, res, next) => {
   const user = req.user.sub;
-  console.log(req.user);
-  const cart = await Cart.findOne({ user, status: "cart" }); //bo away tanya awanay cart bigarenetawa nak orderakan
+  const { productId, quantity } = req.body;
+
+  if (productId && !mongoose.Types.ObjectId.isValid(productId)) {
+    return res
+      .status(400)
+      .json({ status: "error", message: "Invalid productId" });
+  }
+
+  const cart = await Cart.findOne({ user, status: "cart" });
 
   if (!cart) {
     const newCart = await Cart.create({
-      products: [req.body.productId],
+      products: [{ productId, quantity }],
       user,
-      // address: [req.body.address],
     });
 
-    res.status(201).json({ status: "success", data: newCart });
+    return res.status(201).json({ status: "success", data: newCart });
   } else {
+    if (productId) {
+      const existingProduct = cart.products.find(
+        (item) => item.productId.toString() === productId
+      );
+      if (existingProduct) {
+        existingProduct.quantity += quantity || 1;
+      } else {
+        cart.products.push({ productId, quantity });
+      }
+    }
+
     if (req.body.totalprice) {
       if (!cart.totalprice) {
         cart.totalprice.push(req.body.totalprice);
@@ -47,8 +113,6 @@ export const addToCart = tryCatch(async (req, res, next) => {
         cart.totalprice = req.body.totalprice;
       }
     }
-    //todo: check bkaytawa agar itemka haya qantity zyda bkat
-    cart.products.push(req.body.productId);
 
     if (req.body.address) {
       if (!cart.address) {
@@ -57,38 +121,89 @@ export const addToCart = tryCatch(async (req, res, next) => {
         cart.address = req.body.address;
       }
     }
+    if (req.body.status) {
+      //  if (!cart.address) {
+      //    cart.address.push(req.body.address);
+      //  } else {
+      cart.status = req.body.status;
+    }
+    //  }
+
     await cart.save();
-    res.status(201).json({ status: "success", data: cart });
   }
+
+  res.status(201).json({ status: "success", data: cart });
 });
-//TODO: updtae qantity xalata
+
 export const updateCartQuantity = tryCatch(async (req, res) => {
-  const cartId = req.params.cartId;
-  const productId = req.body.productId;
-  const newQuantity = req.body.quantity;
+  try {
+    const { cartId, productId } = req.params;
+    const { quantity } = req.body;
+    if (!mongoose.Types.ObjectId.isValid(cartId)) {
+      res.status(400).json({ error: "Invalid cartId" });
+      return;
+    }
 
-  const cart = await Cart.findByIdAndUpdate(cartId).populate("products");
+    const cart = await Cart.findOne({ _id: cartId, status: "cart" }); // Find the cart with the specified ID and status 'cart'
 
-  const product = cart.products.find(
-    (product) => product._id.toString() === productId
-  );
+    if (!cart) {
+      return res
+        .status(404)
+        .json({ error: "Cart not found or not in the cart state" });
+    }
 
-  if (!product) {
-    return res.status(404).json({ message: "Product not found in cart" });
+    const product = cart.products.find(
+      (p) => p.productId.toString() === productId
+    );
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found in the cart" });
+    }
+
+    product.quantity = quantity;
+    await cart.save();
+
+    res.json(cart);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
-
-  product.quantity = newQuantity;
-
-  await cart.save();
-
-  res.status(200).json({ status: "success", data: cart });
 });
+
+// export const updateCartQuantity = tryCatch(async (req, res) => {
+//   try {
+//     const { cartId, productId } = req.params;
+//     const { quantity } = req.body;
+//     if (!mongoose.Types.ObjectId.isValid(cartId)) {
+//       res.status(400).json({ error: "Invalid cartId" });
+//       return;
+//     }
+//     const cart = await Cart.findOne(cartId);
+
+//     if (!cart || cart.status !== "cart") {
+//       return res.status(404).json({ error: "Cart not found" });
+//     }
+//     const product = cart.products.find(
+//       (p) => p.productId.toString() === productId
+//     );
+
+//     if (!product) {
+//       return res.status(404).json({ error: "Product not found in the cart" });
+//     }
+
+//     product.quantity = quantity;
+//     await cart.save();
+
+//     res.json(cart);
+//   } catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
+// });
 
 export const getCartByUserId = tryCatch(async (req, res) => {
   try {
     const userId = req.params.userId;
-    const carts = await Cart.find({ user: userId })
-      .populate("products")
+    const carts = await Cart.find({ user: userId, status: "cart" })
+      .populate("products.productId")
       .populate("user");
     console.log(carts); // log the carts to see if the updated cart is included
     res.status(200).json({ status: "success", data: carts });
@@ -98,31 +213,30 @@ export const getCartByUserId = tryCatch(async (req, res) => {
 });
 
 export const deleteCartItem = tryCatch(async (req, res) => {
-  const userId = req.body.userId;
-  // const userId = "6453798d587d2dd51e7affac";
-  const productIdToRemove = req.body._id;
+  const cartId = req.body.cartId;
+  const productId = req.body.productId;
 
-  const cartitems = await Cart.findOne({ user: userId }).then((cart) => {
+  try {
+    const cart = await Cart.findById({ cartId, status: "cart" });
+
     if (!cart) {
-      return new CustomError("cart not found", 401, 4001);
+      return res
+        .status(404)
+        .json({ status: "error", message: "Cart not found" });
     }
 
     const productIndex = cart.products.findIndex(
-      (product) => String(product?._id) === productIdToRemove
+      (item) => item.productId.toString() === productId
     );
-    console.log(productIdToRemove);
 
-    if (productIndex === -1) {
-      throw new Error("Product not found in cart");
+    if (productIndex !== -1) {
+      cart.products.splice(productIndex, 1);
     }
-
-    cart.products.splice(productIndex, 1);
-    // res.status(200).json({ status: "success", data: cart });
-
-    res.status(200).json({ status: "success", data: cart });
-    if (!cart) {
-      return new CustomError("product not found", 401, 4001);
-    }
-    return cart.save();
-  });
+    await cart.save();
+    return res.status(200).json({ status: "success", data: cart });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ status: "error", message: "An error occurred" });
+  }
 });

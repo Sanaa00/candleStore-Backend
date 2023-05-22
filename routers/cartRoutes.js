@@ -1,4 +1,5 @@
 import { Router } from "express";
+
 import {
   addToCart,
   getCartProduct,
@@ -16,7 +17,7 @@ router
   .get(getCartProduct)
   .post(protect, addToCart);
 
-router.route("/:cartId").put(updateCartQuantity);
+router.route("/:cartId/products/:productId").put(updateCartQuantity);
 router.route("/:userId").get(getCartByUserId);
 
 export default router;
