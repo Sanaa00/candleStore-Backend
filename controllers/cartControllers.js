@@ -217,7 +217,7 @@ export const deleteCartItem = tryCatch(async (req, res) => {
   const productId = req.body.productId;
 
   try {
-    const cart = await Cart.findById({ cartId, status: "cart" });
+    const cart = await Cart.findOne({ _id: cartId, status: "cart" });
 
     if (!cart) {
       return res
@@ -232,6 +232,7 @@ export const deleteCartItem = tryCatch(async (req, res) => {
     if (productIndex !== -1) {
       cart.products.splice(productIndex, 1);
     }
+
     await cart.save();
     return res.status(200).json({ status: "success", data: cart });
   } catch (error) {
@@ -239,4 +240,32 @@ export const deleteCartItem = tryCatch(async (req, res) => {
       .status(500)
       .json({ status: "error", message: "An error occurred" });
   }
+  // const cartId = req.body.cartId;
+  // const productId = req.body.productId;
+  // const cart = await Cart.findById(
+  //   // cartId
+  //   { cartId, status: "cart" }
+  // );
+  // console.log("here5");
+  // if (!cart) {
+  //   console.log("here4");
+  //   return res.status(404).json({ status: "error", message: "Cart not found" });
+  // }
+  // console.log("here3");
+  // const productIndex = cart.products.findIndex(
+  //   (item) => item.productId.toString() === productId
+  // );
+  // console.log("here");
+  // if (productIndex !== -1) {
+  //   cart.products.splice(productIndex, 1);
+  // }
+  // try {
+  //   await cart.save();
+  //   return res.status(200).json({ status: "success", data: cart });
+  // } catch (error) {
+  //   console.log("here2");
+  //   return res
+  //     .status(500)
+  //     .json({ status: "error", message: "An error occurred" });
+  // }
 });
