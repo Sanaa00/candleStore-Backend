@@ -2,7 +2,7 @@ import { Router } from "express";
 import {
   getAllProducts,
   getProductById,
-  updateQuantity,
+  favourite,
   deleteProduct,
   addProduct,
 } from "../controllers/productsControllers.js";
@@ -18,10 +18,6 @@ router
 router.route("/upload-multi").post(uploadMulti, (req, res) => {
   res.send("success");
 });
-router
-  .route("/:id")
-  .get(getProductById)
-  .patch(updateQuantity)
-  .delete(deleteProduct);
+router.route("/:id").get(getProductById).put(favourite).delete(deleteProduct);
 
 export default router;
