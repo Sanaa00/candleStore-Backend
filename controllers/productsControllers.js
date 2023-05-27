@@ -50,9 +50,8 @@ export const getProductById = tryCatch(async (req, res) => {
   }
   res.status(200).json({ status: "success", data: product });
 });
-export const updateQuantity = tryCatch(async (req, res) => {
+export const favourite = tryCatch(async (req, res) => {
   const id = req.params.id;
-
   const product = await Product.findByIdAndUpdate(id, req.body, { new: true });
   if (!product) {
     return new CustomError("product not found", 401, 4001);
