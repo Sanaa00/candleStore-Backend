@@ -5,7 +5,10 @@ const productsSchema = new mongoose.Schema({
   description: { type: String },
   price: { type: Number },
   color: [String],
-  images: { type: [String], required: true },
+  images: {
+    type: [String],
+    // required: true
+  },
   raiting: { type: Number, default: 1 },
   discount: Number,
   favourite: Boolean,
