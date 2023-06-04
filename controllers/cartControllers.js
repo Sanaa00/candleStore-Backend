@@ -24,7 +24,18 @@ export const getCartProduct = tryCatch(async (req, res) => {
 
   res.json({ status: "success", data: cartItem });
 });
+export const getOrder = tryCatch(async (req, res) => {
+  const order = await Cart.find({ status: "order" })
+    .populate("products")
+    .populate("address")
+    .populate("user");
 
+  // await Address.findByIdAndUpdate(req.body.address, {
+  //   $push: { address: address._id },
+  // });
+
+  res.json({ status: "success", data: order });
+});
 //   export const addToCart = tryCatch(async (req, res, next) => {
 //   const user = req.user.sub;
 //   const { productId, quantity, totalprice, address } = req.body;

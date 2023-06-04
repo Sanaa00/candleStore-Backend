@@ -18,7 +18,13 @@ const productsSchema = new mongoose.Schema({
     ref: "category",
     required: true,
   },
-  review: [{ type: mongoose.Types.ObjectId, ref: "review" }],
+  review: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "review",
+    },
+  ],
+  // review: [{ type: mongoose.Types.ObjectId, ref: "review" }],
 });
 const product = mongoose.model("product", productsSchema);
 export default product;
