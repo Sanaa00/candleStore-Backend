@@ -11,6 +11,7 @@ import contactRoutes from "./routers/contactRoutes.js";
 import categoryRoutes from "./routers/categoryRouters.js";
 import addressRoutes from "./routers/addressRouters.js";
 import reviewRoutes from "./routers/reviewRoutes.js";
+import favouriteRoutes from "./routers/favouriteRoutes.js";
 // import addressRoutes from "./routers/addressRouters.js";
 import { connectDB } from "./config/db.js";
 import { trimQueryMiddleware } from "./middleware/trimQuery.middleware.js";
@@ -38,7 +39,7 @@ app.use("/api/products", productsRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/contact", contactRoutes);
-
+app.use("/api/favourite", favouriteRoutes);
 app.use("/api/review", reviewRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/address", addressRoutes);

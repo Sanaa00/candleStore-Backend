@@ -8,14 +8,18 @@ const data = JSON.parse(fs.readFileSync(`${__dirname}/data/db.json`));
 
 export const addReview = tryCatch(async (req, res) => {
   const review = await Review.create(req.body);
-
-  await Product.findByIdAndUpdate(req.body.Product, {
+  await Product.findByIdAndUpdate(req.body.product, {
     $push: { review: review._id },
   });
+
+  // await Product.findByIdAndUpdate(req.body.Product, {
+  //   $push: { review: review._id },
+  // });
   res.status(200).json({ status: "success", data: review });
 });
 export const getReview = tryCatch(async (req, res) => {
-  const addReview = await Review.find().populate("product");
+  const addReview = await Review.find();
+  // .populate("product");
   res.status(200).json({ status: "success", data: addReview });
 });
 
