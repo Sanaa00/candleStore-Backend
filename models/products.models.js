@@ -7,7 +7,6 @@ const productsSchema = new mongoose.Schema({
   color: [String],
   images: {
     type: [String],
-    // required: true
   },
   raiting: { type: Number, default: 1 },
   discount: Number,
@@ -24,7 +23,6 @@ const productsSchema = new mongoose.Schema({
       ref: "review",
     },
   ],
-  // review: [{ type: mongoose.Types.ObjectId, ref: "review" }],
 });
 const product = mongoose.model("product", productsSchema);
 export default product;

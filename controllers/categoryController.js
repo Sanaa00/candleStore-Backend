@@ -2,7 +2,6 @@ import Product from "../models/products.models.js";
 import Category from "../models/category.models.js";
 import { tryCatch } from "../utils/tryCatch.js";
 
-//
 export const getCategory = tryCatch(async (req, res) => {
   const category = await Category.find().populate("products");
 

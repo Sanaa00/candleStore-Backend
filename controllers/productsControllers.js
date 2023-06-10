@@ -2,10 +2,7 @@ import path from "path";
 import fs from "fs";
 import Product from "../models/products.models.js";
 import Category from "../models/category.models.js";
-import Cart from "../models/cart.models.js";
 import { tryCatch } from "../utils/tryCatch.js";
-import Review from "../models/review.models.js";
-
 const __dirname = path.resolve();
 const data = JSON.parse(fs.readFileSync(`${__dirname}/data/db.json`));
 
@@ -20,7 +17,6 @@ export const getAllProducts = tryCatch(async (req, res) => {
   excluteQuery.forEach((key) => {
     delete queryObj[key];
   });
-  // delete query.search;
 
   if (req.query.search) {
     queryObj.productName = new RegExp(req.query.search, "i");
@@ -75,9 +71,31 @@ export const addProduct = tryCatch(async (req, res) => {
     $push: { products: product._id },
   });
 
-  // await Review.findByIdAndUpdate(req.body.review, {
-  //   $push: { review: req.body._id },
-  // });
-
   res.status(200).json({ status: "success", data: product });
+});
+export const getProductsforAdmin = tryCatch(async (req, res) => {
+  const order = await Product.find().populate("review");
+
+  res.json({ status: "success", data: order });
+});
+export const discount = tryCatch(async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const newDiscount = req.body.discount;
+
+    const product = await Product.findByIdAndUpdate(
+      productId,
+      { discount: newDiscount },
+      { new: true }
+    );
+
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    return res.json(product);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
 });
