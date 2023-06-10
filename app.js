@@ -1,4 +1,3 @@
-// import express from "express";
 import express from "express";
 import morgan from "morgan";
 import dotenv from "dotenv";
@@ -12,7 +11,7 @@ import categoryRoutes from "./routers/categoryRouters.js";
 import addressRoutes from "./routers/addressRouters.js";
 import reviewRoutes from "./routers/reviewRoutes.js";
 import favouriteRoutes from "./routers/favouriteRoutes.js";
-// import addressRoutes from "./routers/addressRouters.js";
+
 import { connectDB } from "./config/db.js";
 import { trimQueryMiddleware } from "./middleware/trimQuery.middleware.js";
 import { errorHandler } from "./middleware/errorHandler.middleware.js";

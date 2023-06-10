@@ -15,7 +15,6 @@ export const getUser = tryCatch(async (req, res) => {
   });
   res.json({ status: "success", results: users.length, data: users });
 });
-
 export const getCurrentUser = tryCatch(async (req, res) => {
   try {
     const user = await Users.findById(req.user.sub).populate("cart");
@@ -64,21 +63,3 @@ export const login = async (req, res, next) => {
     } catch (err) {}
   })(req, res, next);
 };
-// export const addUser = async (req, res) => {
-//   try {
-//     const addUser = await User.create(req.body);
-//     res.status(200).json({ status: "success", data: addUser });
-//   } catch (err) {
-//     res.status(404).json({ status: "error", data: err.message });
-//   }
-// };
-
-// export const deleteAcount = async (req, res) => {
-//   const id = req.params.id;
-//   const deleteAcount = await CreateAccount.findByIdAndDelete(id, { new: true });
-//   if (!deleteAcount) {
-//     res.status(404).json({ status: "error", data: "product not found" });
-//   }
-
-//   res.status(200).json({ status: "success", data: deleteAcount });
-// };

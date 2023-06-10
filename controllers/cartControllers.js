@@ -1,8 +1,3 @@
-import User from "../models/user.models.js";
-import Product from "../models/products.models.js";
-import CustomError from "../CustomError.js";
-import Address from "../models/address.models.js";
-import { json } from "express";
 import path from "path";
 import fs from "fs";
 import Cart from "../models/cart.models.js";
@@ -36,55 +31,6 @@ export const getOrder = tryCatch(async (req, res) => {
 
   res.json({ status: "success", data: order });
 });
-//   export const addToCart = tryCatch(async (req, res, next) => {
-//   const user = req.user.sub;
-//   const { productId, quantity, totalprice, address } = req.body;
-// if (productId && !mongoose.Types.ObjectId.isValid(productId)) {
-//   return res
-//     .status(400)
-//     .json({ status: "error", message: "Invalid productId" });
-// }
-//   const cart = await Cart.findOne({ user, status: "cart" });
-//   if (!cart) {
-//     const newCart = await Cart.create({
-//       products: [{ productId, quantity }],
-//       user,
-//     });
-//     return res.status(201).json({ status: "success", data: newCart });
-//   } else {
-//     if (productId) {
-//       const existingProduct = cart.products.find(
-//         (item) => item.productId.toString() === productId
-//       );
-//       if (existingProduct) {
-//         existingProduct.quantity += quantity || 1;
-//       } else {
-//         cart.products.push({ productId, quantity });
-//       }
-//     }
-//     if (totalprice) {
-//       if (!cart.totalprice) {
-//         cart.totalprice.push(totalprice);
-//       } else {
-//         cart.totalprice = totalprice;
-//       }
-//     }
-//     await cart.save();
-//     if (address) {
-//       if (!cart.address || cart.address !== address) {
-//         await cart.save(); // Save the cart with products and total before resetting
-//         // Reset the cart to empty
-//         cart.products = [];
-//         cart.totalprice = null;
-//         cart.address = address;
-//         await cart.save(); // Save the cart with the updated address
-//       }
-//     } else {
-//       await cart.save(); // Save the cart without resetting
-//     }
-//     res.status(201).json({ status: "success", data: cart });
-//   }
-// });
 
 export const addToCart = tryCatch(async (req, res, next) => {
   const user = req.user.sub;
@@ -179,36 +125,6 @@ export const updateCartQuantity = tryCatch(async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
-// export const updateCartQuantity = tryCatch(async (req, res) => {
-//   try {
-//     const { cartId, productId } = req.params;
-//     const { quantity } = req.body;
-//     if (!mongoose.Types.ObjectId.isValid(cartId)) {
-//       res.status(400).json({ error: "Invalid cartId" });
-//       return;
-//     }
-//     const cart = await Cart.findOne(cartId);
-
-//     if (!cart || cart.status !== "cart") {
-//       return res.status(404).json({ error: "Cart not found" });
-//     }
-//     const product = cart.products.find(
-//       (p) => p.productId.toString() === productId
-//     );
-
-//     if (!product) {
-//       return res.status(404).json({ error: "Product not found in the cart" });
-//     }
-
-//     product.quantity = quantity;
-//     await cart.save();
-
-//     res.json(cart);
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// });
 
 export const getCartByUserId = tryCatch(async (req, res) => {
   try {

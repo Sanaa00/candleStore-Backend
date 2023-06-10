@@ -9,7 +9,7 @@ import { signUpMiddleware, protect } from "../middleware/auth.middleware.js";
 const router = Router();
 
 router.route("/").get(getUser);
-// .post(addUser);
+
 router.route("/signup").post(signUpMiddleware, signup);
 
 router.post("/login", login);

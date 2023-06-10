@@ -12,15 +12,10 @@ export const addReview = tryCatch(async (req, res) => {
     $push: { review: review._id },
   });
 
-  // await Product.findByIdAndUpdate(req.body.Product, {
-  //   $push: { review: review._id },
-  // });
   res.status(200).json({ status: "success", data: review });
 });
 export const getReview = tryCatch(async (req, res) => {
   const addReview = await Review.find();
-  // .populate("product");
+
   res.status(200).json({ status: "success", data: addReview });
 });
-
-//TODO: pewista product update betawa u id review wargret

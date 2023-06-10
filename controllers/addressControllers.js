@@ -6,9 +6,7 @@ import { tryCatch } from "../utils/tryCatch.js";
 
 export const getAddress = tryCatch(async (req, res) => {
   const address = await Address.find();
-  // await Cart.findByIdAndUpdate(req.body.cart, {
-  //   $push: { products: Cart._id },
-  // });
+
   res.json({ status: "success", data: address });
 });
 export const AddAddress = tryCatch(async (req, res) => {
