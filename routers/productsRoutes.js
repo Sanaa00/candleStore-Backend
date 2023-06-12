@@ -22,9 +22,11 @@ router
   .get(getAllProducts)
   .post(protect, checkRole("admin"), addProduct);
 router.route("/productsForAdmin").get(getProductsforAdmin);
-router.route("/upload").post(uploadSingle, resizeImage, (req, res) => {
-  res.json({ path: `products/${req.file.filename}` });
-});
+router
+  .route("/uploads/products")
+  .post(uploadSingle, resizeImage, (req, res) => {
+    res.json({ path: `/uploads/products/${req.file.filename}` });
+  });
 
 router.route("/upload-multi").post(uploadMulti, resizeImages, (req, res) => {
   res.json({ paths: req.body.files });
