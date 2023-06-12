@@ -46,6 +46,9 @@ app.use("/api/address", addressRoutes);
 app.use(errorHandler);
 
 const __dirname = path.resolve();
-app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+app.use(
+  "/uploads/products",
+  express.static(path.join(__dirname, "/uploads/products"))
+);
 
 export default app;
