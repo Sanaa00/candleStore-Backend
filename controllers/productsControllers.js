@@ -23,7 +23,7 @@ export const getAllProducts = tryCatch(async (req, res) => {
   }
   const getQuery = Product.find(queryObj).populate("categoryId", "category");
   const page = req.query.page || 1;
-  const limit = req.query.limit || 8;
+  const limit = req.query.limit || 6;
   const skip = limit * (page - 1);
   const productLength = (await Product.find(queryObj)).length;
 
