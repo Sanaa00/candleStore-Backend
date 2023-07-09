@@ -25,7 +25,7 @@ export const getOrder = tryCatch(async (req, res) => {
   query = query.replace(/\b(gte|gt|lt|lte)\b/g, (match) => `$${match}`);
 
   let queryObj = JSON.parse(query);
-   queryObj.status = "order"|"Completed"|"Pending"; 
+   queryObj.status = "order"||"Completed"||"Pending"; 
 
   const excluteQuery = ["limit", "page", "search"];
 
