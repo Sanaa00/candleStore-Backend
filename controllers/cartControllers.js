@@ -20,16 +20,30 @@ export const getCartProduct = tryCatch(async (req, res) => {
   res.json({ status: "success", data: cartItem });
 });
 export const getOrder = tryCatch(async (req, res) => {
-  const order = await Cart.find({ status: "order" })
-    .populate("products")
-    .populate("address")
-    .populate("user");
 
-  // await Address.findByIdAndUpdate(req.body.address, {
-  //   $push: { address: address._id },
-  // });
+   let query = JSON.stringify(req.query);
+  query = query.replace(/\b(gte|gt|lt|lte)\b/g, (match) => `$${match}`);
 
-  res.json({ status: "success", data: order });
+  let queryObj = JSON.parse(query);
+   queryObj.status = "order"; 
+
+  const excluteQuery = ["limit", "page", "search"];
+
+  excluteQuery.forEach((key) => {
+    delete queryObj[key];
+  });
+
+  const getQuery = Cart.find( queryObj);
+  const page = req.query.page || 1;
+  const limit = req.query.limit || 6;
+  const skip = limit * (page - 1);
+  const OrderLength = (await Cart.find(queryObj)).length;
+
+  getQuery.skip(skip).limit(limit);
+  const Orders = await getQuery;
+
+  res.json({ status: "success", data: { result: OrderLength, Orders } });
+
 });
 
 export const addToCart = tryCatch(async (req, res, next) => {
@@ -195,4 +209,28 @@ export const deleteCartItem = tryCatch(async (req, res) => {
   //     .status(500)
   //     .json({ status: "error", message: "An error occurred" });
   // }
+});
+export const getcartById = tryCatch(async (req, res) => {
+  const id = req.params._id;
+
+  const cart = await Cart.findById(id)
+    // .populate("user")
+
+
+  if (!cart) {
+    res.status(404).json({ status: "error", message: "cart not found" });
+  }
+  res.status(200).json({ status: "success", data: cart });
+});
+export const updateOrderStatus = tryCatch(async (req, res) => {
+  const { orderId } = req.params;
+  const { status } = req.body;
+
+  const updatedOrder = await Cart.findOneAndUpdate(
+    { _id: orderId },
+    { status },
+    { new: true }
+  );
+
+  res.json({ status: "success", data: { order: updatedOrder } });
 });
