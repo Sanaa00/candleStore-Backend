@@ -144,8 +144,7 @@ export const getCartByUserId = tryCatch(async (req, res) => {
   try {
     const userId = req.params.userId;
     const carts = await Cart.find({ user: userId, status: "cart" })
-      .populate("products.productId")
-      .populate("user");
+      .populate("products.productId","user").populate("user");
     console.log(carts); // log the carts to see if the updated cart is included
     res.status(200).json({ status: "success", data: carts });
   } catch (err) {
