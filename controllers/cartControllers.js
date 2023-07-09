@@ -213,7 +213,7 @@ export const deleteCartItem = tryCatch(async (req, res) => {
 export const getcartById = tryCatch(async (req, res) => {
   const id = req.params._id;
 
-  const cart = await Cart.findById(id)
+  const cart = await Cart.findById(id).populate("user")
     // .populate("user")
 
 
