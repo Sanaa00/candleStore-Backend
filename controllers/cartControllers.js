@@ -223,14 +223,21 @@ export const getcartById = tryCatch(async (req, res) => {
   res.status(200).json({ status: "success", data: cart });
 });
 export const updateOrderStatus = tryCatch(async (req, res) => {
-  const { orderId } = req.params;
-  const { status } = req.body;
+  const  orderId  = req.params._id;
+  const  status  = req.body.status;
 
   const updatedOrder = await Cart.findOneAndUpdate(
-    { _id: orderId },
+     orderId ,
     { status },
     { new: true }
-  );
+
+  )
+
+  if (!updatedOrder) {
+    return res.status(404).json({ status: "error", message: "Order not found" });
+  }
+
+  
 
   res.json({ status: "success", data: { order: updatedOrder } });
 });
