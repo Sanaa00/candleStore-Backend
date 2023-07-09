@@ -33,7 +33,7 @@ export const getOrder = tryCatch(async (req, res) => {
     delete queryObj[key];
   });
 
-  const getQuery = Cart.find( queryObj);
+  const getQuery = Cart.find( queryObj).populate("user");
   const page = req.query.page || 1;
   const limit = req.query.limit || 6;
   const skip = limit * (page - 1);
