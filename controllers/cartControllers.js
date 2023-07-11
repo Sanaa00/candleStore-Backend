@@ -26,7 +26,7 @@ export const getOrder = tryCatch(async (req, res) => {
 
   let queryObj = JSON.parse(query);
   //  queryObj.status = "order"||"Completed"||"Pending"; 
-queryObj.status = { $in: ["Order", "Completed", "Pending"] };
+queryObj.status = { $in: ["order", "Completed", "Pending"] };
   const excluteQuery = ["limit", "page", "search"];
 
   excluteQuery.forEach((key) => {
@@ -222,25 +222,41 @@ export const getcartById = tryCatch(async (req, res) => {
   res.status(200).json({ status: "success", data: cart });
 });
 export const updateOrderStatus = tryCatch(async (req, res) => {
+  const orderId = req.params.id;
+  const newStatus = req.body.status;
 
- const orderIds = req.body.orderIds; // Array of order IDs
-  const newStatus = req.body.status; // New status value
+  Cart.findByIdAndUpdate(
+    orderId,
+    { $set: { status: newStatus } },
+    { new: true }
+  )
+    .then((order) => {
+      if (!order) {
+        return res.status(404).json({ error: 'Order not found' });
+      }
+      res.json({ status: 'success', order });
+    })
+})
+   
+   
+//  const orderIds = req.body.orderIds; // Array of order IDs
+//   const newStatus = req.body.status; // New status value
 
-  try {
-    const updatedOrders = await Cart.updateMany(
-      { _id: { $in: orderIds } },
-      { $set: { status: newStatus } }
-    );
+//   try {
+//     const updatedOrders = await Cart.updateMany(
+//       { _id: { $in: orderIds } },
+//       { $set: { status: newStatus } }
+//     );
 
-    res.json({
-      status: "success",
-      message: "Orders updated successfully",
-      updatedOrders: updatedOrders.nModified,
-    });
-  } catch (error) {
-    res.status(500).json({ status: "error", message: "Failed to update orders" });
-  }
-}
+//     res.json({
+//       status: "success",
+//       message: "Orders updated successfully",
+//       updatedOrders: updatedOrders.nModified,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ status: "error", message: "Failed to update orders" });
+//   }
+// }
 
   // const  orderId  = req.params._id;
   // const  status  = req.body.status;
@@ -259,4 +275,4 @@ export const updateOrderStatus = tryCatch(async (req, res) => {
   
 
   // res.json({ status: "success", data: { Orders: updatedOrder } });
-);
+// );
