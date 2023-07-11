@@ -6,13 +6,13 @@ import {
   deleteProduct,
   addProduct,
   getProductsforAdmin,
-  discount,
+  discount,updateProduct
 } from "../controllers/productsControllers.js";
 import {
   resizeImage,
   resizeImages,
   uploadMulti,
-  uploadSingle,
+  uploadSingle
 } from "../middleware/multer.middleware.js";
 import { checkRole, protect } from "../middleware/auth.middleware.js";
 const router = Router();
@@ -31,8 +31,8 @@ router
 router.route("/upload-multi").post(uploadMulti, resizeImages, (req, res) => {
   res.json({ paths: req.body.files });
 });
-router.route("/:id").get();
 
 router.route("/:id").get(getProductById).put(favourite).delete(deleteProduct);
 router.route("/:id/descount").put(discount);
+router.route("/updateproduct/:id").put(updateProduct)
 export default router;

@@ -3,6 +3,7 @@ import fs from "fs";
 import Product from "../models/products.models.js";
 import Category from "../models/category.models.js";
 import { tryCatch } from "../utils/tryCatch.js";
+import CustomError from "../CustomError.js";
 const __dirname = path.resolve();
 const data = JSON.parse(fs.readFileSync(`${__dirname}/data/db.json`));
 
@@ -79,7 +80,7 @@ export const getProductsforAdmin = tryCatch(async (req, res) => {
   res.json({ status: "success", data: order });
 });
 export const discount = tryCatch(async (req, res) => {
-  try {
+  
     const productId = req.params.id;
     const newDiscount = req.body.discount;
 
@@ -92,10 +93,32 @@ export const discount = tryCatch(async (req, res) => {
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
+      res.status(200).json({ status: "success", data: product });
 
-    return res.json(product);
+
+});
+
+export const updateProduct = tryCatch(async (req, res) => {
+  
+   const  productId  = req.params.id;
+  const { productName, price, category, description } = req.body;
+
+  try {
+    const updatedProduct = await Product.findByIdAndUpdate(
+      productId,
+      { productName, price, category, description },
+      { new: true }
+    );
+
+    if (!updatedProduct) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    res.json(updatedProduct);
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: "Internal server error" });
+    console.error('Error updating product:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
+
+
 });
