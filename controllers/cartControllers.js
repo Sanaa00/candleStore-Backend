@@ -25,8 +25,8 @@ export const getOrder = tryCatch(async (req, res) => {
   query = query.replace(/\b(gte|gt|lt|lte)\b/g, (match) => `$${match}`);
 
   let queryObj = JSON.parse(query);
-   queryObj.status = "order"||"Completed"||"Pending"; 
-
+  //  queryObj.status = "order"||"Completed"||"Pending"; 
+queryObj.status = { $in: ["Order", "Completed", "Pending"] };
   const excluteQuery = ["limit", "page", "search"];
 
   excluteQuery.forEach((key) => {
@@ -144,8 +144,8 @@ export const getCartByUserId = tryCatch(async (req, res) => {
   try {
     const userId = req.params.userId;
     const carts = await Cart.find({ user: userId, status: "cart" })
-      .populate("products.productId","user").populate("user");
-    console.log(carts); // log the carts to see if the updated cart is included
+      .populate("products.productId").populate("user");
+    // console.log(carts); // log the carts to see if the updated cart is included
     res.status(200).json({ status: "success", data: carts });
   } catch (err) {
     res.status(500).json({ status: "error", message: err.message });
@@ -222,21 +222,41 @@ export const getcartById = tryCatch(async (req, res) => {
   res.status(200).json({ status: "success", data: cart });
 });
 export const updateOrderStatus = tryCatch(async (req, res) => {
-  const  orderId  = req.params._id;
-  const  status  = req.body.status;
 
-  const updatedOrder = await Cart.findOneAndUpdate(
-     orderId ,
-    { status },
-    { new: true }
+ const orderIds = req.body.orderIds; // Array of order IDs
+  const newStatus = req.body.status; // New status value
 
-  )
+  try {
+    const updatedOrders = await Cart.updateMany(
+      { _id: { $in: orderIds } },
+      { $set: { status: newStatus } }
+    );
 
-  if (!updatedOrder) {
-    return res.status(404).json({ status: "error", message: "Order not found" });
+    res.json({
+      status: "success",
+      message: "Orders updated successfully",
+      updatedOrders: updatedOrders.nModified,
+    });
+  } catch (error) {
+    res.status(500).json({ status: "error", message: "Failed to update orders" });
   }
+}
+
+  // const  orderId  = req.params._id;
+  // const  status  = req.body.status;
+
+  // const updatedOrder = await Cart.findByIdAndUpdate(
+  //  orderId,
+  //   { status },
+  //   { new: true }
+
+  // )
+
+  // if (!updatedOrder) {
+  //   return res.status(404).json({ status: "error", message: "Order not found" });
+  // }
 
   
 
-  res.json({ status: "success", data: { order: updatedOrder } });
-});
+  // res.json({ status: "success", data: { Orders: updatedOrder } });
+);
