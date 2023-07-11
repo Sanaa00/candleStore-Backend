@@ -26,6 +26,6 @@ router.route("/order").get(getOrder);
 
 router.route("/:cartId/products/:productId").put(updateCartQuantity);
 router.route("/:userId").get(getCartByUserId);
-router.route("/order/:_id").get(getcartById).put(updateOrderStatus);
+router.route("/order/:id").get(getcartById).put(updateOrderStatus);
 
 export default router;
