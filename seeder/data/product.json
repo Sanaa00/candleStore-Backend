@@ -19,20 +19,21 @@
       "category": "Simple",
       "quantity": 1,
       "discount": 0, 
-      "favourite": false 
+      "favourite": false ,
+       "amount": 300,
+       "sell":250
   
     },
     {
-      
       "productName": "Happy Candle Collective",
-      "description":"hhhhhhhhhhhhh",
+      "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 25,
       "rating": 4,
       "discount": 0,
       "favourite": false,
-      "category": "Collection",
+      "categoryId": "644c2aae693c69ab800808a7",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -44,19 +45,21 @@
       "https://images.unsplash.com/photo-1557308917-ef00c7059bfd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
       "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
        "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-      ]
+      ],
+      "amount": 350,
+       "sell":150
     },
     {
 
       "productName": "Fragrant candles",
-      "description":"hhhhhhhhhhhhh",
+      "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 12,
       "rating": 2.5,
       "discount": 0,
       "favourite": false,
-      "category": "Collection",
+      "categoryId": "644c2aae693c69ab800808a7",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -69,19 +72,21 @@
         "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
         "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+      "amount": 140,
+       "sell":200
     },
     {
       "id": 4,
       "productName": "Flaming Candle", 
-      "description":"hhhhhhhhhhhhh",
+      "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 8,
       "rating": 3,
       "discount": 0,
       "favourite": false,
-      "category": "Simple",
+      "categoryId": "644a4e546db1819ae8985c4e",
       "quantity": 0,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -93,19 +98,21 @@
        "https://images.unsplash.com/photo-1557308917-ef00c7059bfd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
        "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
         "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-      ]
+      ],
+      "amount": 560,
+       "sell":210
     },
     {
       "id": 5,
       "productName": "Vegan Bouquet",
-      "description":"hhhhhhhhhhhhh",
+      "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 15,
       "rating": 3.5,
       "discount": 0,
       "favourite": false,
-      "category": "Flowers",
+      "categoryI": "645a524e75e4e2dded237e2e",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -117,21 +124,23 @@
        "https://images.unsplash.com/photo-1557308917-ef00c7059bfd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
        "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
         "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-      ]
+      ],
+      "amount": 760,
+       "sell":250
     },
     {
       "id": 6,
       "productName": "Tranquil Tealights",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 5,
       "rating": 2.5,
       
       "url": "https://cdn.shopify.com/s/files/1/0236/6289/products/Siennabowl_Arista_lifestyle11_090222_12x8_2a657f6f-80db-4f47-b88d-fd23047885f2_2000x.jpg?v=1668437572",
       "discount": 0,
       "favourite": false,
-      "category": "Collection",
+      "categoryId": "644c2aae693c69ab800808a7",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -144,19 +153,21 @@
        "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
         "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+      "amount": 980,
+       "sell":240
     },
     {
       "id": 7,
       "productName": "Lemon candle",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 10,
       "rating": 3,
       "discount": 0,
       "favourite": false,
-      "category": "Collection",
+      "categoryId": "644c2aae693c69ab800808a7",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -169,19 +180,21 @@
         "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
        "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
 
-      ]
+      ],
+      "amount": 350,
+       "sell":540
     },
     {
       "id": 8,
       "productName": "Vanilla candle",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 16,
       "rating": 1,
       "discount": 0,
       "favourite": false,
-      "category": "Scently",
+      "categoryId": "645a51f875e4e2dded237e25",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -194,21 +207,23 @@
          "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
          "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+      "amount": 870,
+       "sell":230
     },
     {
       "id": 9,
       "productName": "Lavender Flame",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 20,
       "rating": 4.5,
       
       "url": "https://cdn.shopify.com/s/files/1/0236/6289/products/MG_6208copy_12x8__1_2000x.jpg?v=1663704310",
       "discount": 0,
       "favourite": false,
-      "category": "Flowers",
+      "categoryId": "645a524e75e4e2dded237e2e",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -221,19 +236,21 @@
       "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
        "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
     
-      ]
+      ],
+      "amount": 980,
+       "sell":240
     },
     {
       "id": 10,
       "productName": "Hope Escape",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 5,
       "rating": 2,
       "discount": 0,
       "favourite": false,
-      "category": "Simple",
+      "categoryId": "644a4e546db1819ae8985c4e",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -245,21 +262,23 @@
        "https://images.unsplash.com/photo-1557308917-ef00c7059bfd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
          "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
         "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-      ]
+      ],
+      "amount": 760,
+       "sell":460
     },
     {
       "id": 11,
       "productName": "Floral",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 18,
       "rating": 4,
       
       "url": "https://cdn.shopify.com/s/files/1/0236/6289/products/CeremonyTeaGiftSet_Mezo_12x8_092920_2000x.jpg?v=1620911208",
       "discount": 0,
       "favourite": false,
-      "category": "Flowers",
+      "categoryId": "645a524e75e4e2dded237e2e",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -272,19 +291,21 @@
         "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
         "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+      "amount": 760,
+       "sell":670
     },
     {
       "id": 12,
       "productName": "Coffee Candle", 
-      "description":"hhhhhhhhhhhhh",
+      "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 10,
       "rating": 3.5,
       "discount": 0,
       "favourite": false,
-      "category": "Scently",
+      "categoryId": "645a51f875e4e2dded237e25",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -297,21 +318,23 @@
         "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
          "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+      "amount": 890,
+       "sell":340
     },
     {
       "id": 13,
       "productName": "Mist candles",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 25,
       "rating": 5,
       
       "url": "https://cdn.shopify.com/s/files/1/0236/6289/products/Jewelry_lulea_giftset_scoutcard_12x8_032523_2000x.jpg?v=1680641277",
       "discount": 0,
       "favourite": false,
-      "category": "Luxury",
-      "quantity": 1,
-      "colors": [
+      "category": "645a524e75e4e2dded237e2e",
+      "quantityId": 1,
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -324,21 +347,23 @@
         "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
        "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+      "amount": 340,
+       "sell":90
     },
     {
       "id": 14,
       "productName": "Memories",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 5,
       "rating": 3.5,
       
       "url": "https://cdn.shopify.com/s/files/1/0236/6289/products/IMG_4020_1_2000x.jpg?v=1620912099",
       "discount": 0,
       "favourite": false,
-      "category": "Simple",
+      "categoryId": "644a4e546db1819ae8985c4e",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -351,21 +376,23 @@
       "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
        "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+      "amount": 890,
+       "sell":450
     },
     {
       "id": 15,
        "productName": "Gold & White Candle",
-        "description":"hhhhhhhhhhhhh",
+        "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 10,
       "rating": 3,
      
       "url": "https://cdn.shopify.com/s/files/1/0236/6289/products/PP_7106_copy_12x8_2000x.JPG?v=1620910339",
       "discount": 0,
       "favourite": false,
-      "category": "Flowers",
+      "categoryId": "645a524e75e4e2dded237e2e",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -378,21 +405,23 @@
       "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
         "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+      "amount": 980,
+       "sell":340
     },
     {
       "id": 16,
       "productName": "Novelty Candle",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 8,
       "rating": 3.7,
       
       "url": "https://cdn.shopify.com/s/files/1/0236/6289/products/PP_0488_copy_12x8_22a7e25a-112c-44b5-be0c-26d3b5c7310d_2000x.jpg?v=1679937760",
       "discount": 0,
       "favourite": false,
-      "category": "Simple",
+      "categoryId": "644a4e546db1819ae8985c4e",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -405,19 +434,21 @@
        "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
          "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+      "amount":980,
+       "sell":280
     },
     {
       "id": 17,
       "productName": "Cute Burn",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 12,
       "rating": 3.5,
       "discount": 0,
       "favourite": false,
-      "category": "Scently",
+      "categoryId": "645a51f875e4e2dded237e25",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -430,19 +461,21 @@
        "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
         "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+      "amount": 450,
+       "sell":260
     },
     {
       "id": 18,
         "productName": "Hope Escape",
-         "description":"hhhhhhhhhhhhh",
+         "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 30,
       "rating": 4.8,
       "discount": 0,
       "favourite": false,
-      "category": "Luxury",
+      "categoryId": "645a51f875e4e2dded237e25",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -460,14 +493,14 @@
     {
       "id": 19,
       "productName": "Pillars of Hope",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 35,
       "rating": 4,
       "discount": 0,
       "favourite": false,
-      "category": "Flowers",
+      "categoryId": "645a524e75e4e2dded237e2e",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -480,19 +513,21 @@
        "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
         "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+       "amount": 890,
+       "sell":870
     },
     {
       "id": 20,
        "productName": "Primitive Candle", 
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 5,
       "rating": 2.8,
       "discount": 0,
       "favourite": false,
-      "category": "Scently",
+      "categoryId": "645a51f875e4e2dded237e25",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -505,19 +540,21 @@
        "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
        "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+       "amount": 380,
+       "sell":370
     },
     {
       "id": 21,
       "productName": "Luxury candles",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 35,
       "rating": 4.4,
       "discount": 0,
       "favourite": false,
-      "category": "Luxury",
-      "quantity": 1,
-      "colors": [
+      "category": "645a524e75e4e2dded237e2e",
+      "quantityId": 1,
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -530,19 +567,21 @@
       "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
      "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+       "amount": 870,
+       "sell":430
     },
     {
       "id": 22,
         "productName": "Queen candle",
-         "description":"hhhhhhhhhhhhh",
+         "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 18,
       "rating": 3.9,
       "discount": 0,
       "favourite": false,
-      "category": "Scently",
+      "categoryId": "645a51f875e4e2dded237e25",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -555,19 +594,21 @@
         "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
        "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+       "amount": 240,
+       "sell":540
     },
     {
       "id": 23,
          "productName": "Torch",
-          "description":"hhhhhhhhhhhhh",
+          "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 20,
       "rating": 3.5,
       "discount": 0,
       "favourite": false,
-      "category": "Collection",
+      "categoryId": "644c2aae693c69ab800808a7",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -579,19 +620,21 @@
         "https://images.unsplash.com/photo-1557308917-ef00c7059bfd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
        "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
        "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-      ]
+      ],
+       "amount": 560,
+       "sell":230
     },
     {
       "id": 24,
       "productName": "Sweet Bay Candle",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 3,
       "rating": 3.5,
       "discount": 0,
       "favourite": false,
-      "category": "Simple",
+      "categoryId": "644a4e546db1819ae8985c4e",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -604,19 +647,21 @@
        "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
      "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+       "amount": 340,
+       "sell":230
     },
     {
       "id": 25,
        "productName": "Candledo",
-        "description":"hhhhhhhhhhhhh",
+        "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 6,
       "rating": 2.7,
       "discount": 0,
       "favourite": false,
-      "category": "Simple",
+      "categoryId": "644a4e546db1819ae8985c4e",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -629,21 +674,23 @@
         "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
         "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+       "amount": 98,
+       "sell":12
     },
     {
       "id": 26,
       "productName": "Sacred Light",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 18,
       "rating": 4.5,
       
       "url": "https://images.urbndata.com/is/image/Anthropologie/80180789_901_b?$an-category$&qlt=80&fit=constrain",
       "discount": 0,
       "favourite": false,
-      "category": "Flowers",
+      "categoryId": "645a524e75e4e2dded237e2e",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -656,19 +703,22 @@
          "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
         "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+
+       "amount": 345,
+       "sell":233
     },
     {
       "id": 27,
       "productName": "Magical Candle",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 24,
       "rating": 4.2,
       "discount": 0,
       "favourite": false,
-      "category": "Luxury",
+      "categoryId": "644c2aae693c69ab800808a7",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -681,19 +731,21 @@
         "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
         "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+       "amount": 645,
+       "sell":244
     },
     {
       "id": 28,
       "productName": "Glorious Candle",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 14,
       "rating": 2.9,
       "discount": 0,
       "favourite": false,
-      "category": "Flowers",
+      "categoryId": "645a524e75e4e2dded237e2e",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -706,19 +758,21 @@
          "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
        "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+       "amount":987,
+       "sell":345
     },
     {
       "id": 29,
       "productName": "Flamingo candle",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 32,
       "rating": 4.4,
       "discount": 0,
       "favourite": false,
-      "category": "Luxury",
+      "categoryId": "644c2aae693c69ab800808a7",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -731,19 +785,21 @@
          "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
          "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+       "amount": 486,
+       "sell":270
     },
     {
       "id": 30,
        "productName": "Dream Scents",
-       "description":"hhhhhhhhhhhhh",
+       "description":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
       "price": 11,
       "rating": 3.5,
       "discount": 0,
       "favourite": false,
-      "category": "Scently",
+      "categoryId": "645a51f875e4e2dded237e25",
       "quantity": 1,
-      "colors": [
+      "color": [
         "#CE5959",
         "#B8621B",
         "#FEFF86",
@@ -756,6 +812,8 @@
          "https://images.unsplash.com/photo-1588372405219-e40d64efafcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
        "https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         
-      ]
+      ],
+       "amount": 935,
+       "sell":245
     }
   ]

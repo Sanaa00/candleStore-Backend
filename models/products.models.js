@@ -11,7 +11,8 @@ const productsSchema = new mongoose.Schema({
   raiting: { type: Number, default: 1 },
   discount: Number,
   favourite: Boolean,
-
+  amount: Number,
+  sell:Number,
   categoryId: {
     type: mongoose.Types.ObjectId,
     ref: "category",
